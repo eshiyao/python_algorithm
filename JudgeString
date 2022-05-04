@@ -1,0 +1,46 @@
+class JudgeString(object):
+
+    def trans(self, num):
+        """
+        :param num: int
+        :return: string
+        """
+        if num < 0:
+            num = abs(num)
+        else:
+            count = 0
+            numString = []
+            while num != 0:
+                numString.append(num%10)
+                num = num/10
+                count += 1
+            #print(count, numString)
+            return numString
+
+    def judge(self, num):
+        """
+        :param num: int
+        :return: boolean
+        """
+        if num < 0:
+            return False
+        string1 = self.trans(num)
+        if len(string1) == 0:
+            return False
+        elif len(string1) == 1:
+            return True
+        else:
+            for i in range(len(string1)/2):
+                if string1[i] != string1[len(string1) - 1 - i]:
+                    return False
+            return True
+
+
+def Main():
+    I_S = JudgeString()
+    num = [12345,123454321,-112211]
+    for n in num:
+        print I_S.judge(n)
+
+if __name__=="__main__":
+    Main()
