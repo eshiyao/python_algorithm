@@ -1,0 +1,31 @@
+class LongestSentences(object):
+    def checkSpace(self, inputS):
+        """
+        :param inputS: string
+        :return: int (spaces in string)
+        """
+        space=0
+        for i in range(len(inputS)):
+            if inputS[i] == " ":
+                space += 1
+        return space+1
+
+    def checkLongest(self, inputList):
+        """
+        :param inputList: Sentences list
+        :return: int, longest number
+        """
+        counter = 0
+        for sentence in inputList:
+            res = self.checkSpace(sentence)
+            counter = max(res, counter)
+        return counter
+
+def Main():
+    S = LongestSentences()
+    sentences=["a b c","a b c d e","sentence 3"]
+    res = S.checkLongest(sentences)
+    print(res)
+
+if __name__ == "__main__":
+    Main()
